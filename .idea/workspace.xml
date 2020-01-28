@@ -5,8 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/foodie-dev-api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/foodie-dev-api/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/foodie-dev-api/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/foodie-dev-api/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/foodie-dev-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/foodie-dev-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/foodie-dev-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/foodie-dev-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +42,18 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/foodie-dev-pojo/src/main/java/com/cong/pojo" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Confirmation" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cong.my.mapper" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\javaProject\workspaces\foodie-dev\foodie-dev-pojo\src\main\java\com\cong\pojo" />
+      <recent name="C:\javaProject\workspaces\foodie-dev\foodie-dev-mapper\src\main\resources\mapper" />
+      <recent name="C:\javaProject\workspaces\foodie-dev\foodie-dev-mapper\src\main\java\com\cong\mapper" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -82,22 +93,26 @@
       <screen x="0" y="0" width="1458" height="864" />
     </state>
     <state x="185" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1458.864@0.0.1458.864" timestamp="1580208204433" />
-    <state width="1416" height="194" key="GridCell.Tab.0.bottom" timestamp="1580218075906">
+    <state x="510" y="187" key="FileChooserDialogImpl" timestamp="1580220650362">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state width="1416" height="194" key="GridCell.Tab.0.bottom/0.0.1458.864@0.0.1458.864" timestamp="1580218075906" />
-    <state width="1416" height="194" key="GridCell.Tab.0.center" timestamp="1580218075906">
+    <state x="510" y="187" key="FileChooserDialogImpl/0.0.1458.864@0.0.1458.864" timestamp="1580220650362" />
+    <state width="1416" height="194" key="GridCell.Tab.0.bottom" timestamp="1580231118717">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state width="1416" height="194" key="GridCell.Tab.0.center/0.0.1458.864@0.0.1458.864" timestamp="1580218075906" />
-    <state width="1416" height="194" key="GridCell.Tab.0.left" timestamp="1580218075906">
+    <state width="1416" height="194" key="GridCell.Tab.0.bottom/0.0.1458.864@0.0.1458.864" timestamp="1580231118717" />
+    <state width="1416" height="194" key="GridCell.Tab.0.center" timestamp="1580231118717">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state width="1416" height="194" key="GridCell.Tab.0.left/0.0.1458.864@0.0.1458.864" timestamp="1580218075906" />
-    <state width="1416" height="194" key="GridCell.Tab.0.right" timestamp="1580218075906">
+    <state width="1416" height="194" key="GridCell.Tab.0.center/0.0.1458.864@0.0.1458.864" timestamp="1580231118717" />
+    <state width="1416" height="194" key="GridCell.Tab.0.left" timestamp="1580231118717">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state width="1416" height="194" key="GridCell.Tab.0.right/0.0.1458.864@0.0.1458.864" timestamp="1580218075906" />
+    <state width="1416" height="194" key="GridCell.Tab.0.left/0.0.1458.864@0.0.1458.864" timestamp="1580231118717" />
+    <state width="1416" height="194" key="GridCell.Tab.0.right" timestamp="1580231118717">
+      <screen x="0" y="0" width="1458" height="864" />
+    </state>
+    <state width="1416" height="194" key="GridCell.Tab.0.right/0.0.1458.864@0.0.1458.864" timestamp="1580231118717" />
     <state x="231" y="74" key="SettingsEditor" timestamp="1580208269266">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
