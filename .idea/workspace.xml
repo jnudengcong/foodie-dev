@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e0c27e4-3991-4e19-80d9-e0a96bc42b37" name="Default Changelist" comment="" />
+    <list default="true" id="0e0c27e4-3991-4e19-80d9-e0a96bc42b37" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -15,6 +31,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1WwJQU00RFV28AKwjXQkMnxV48C" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -22,7 +41,28 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Confirmation" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cong.Application" />
+      <module name="foodie-dev-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cong.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Application" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -38,26 +78,30 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1416" height="224" key="GridCell.Tab.0.bottom" timestamp="1580134466049">
+    <state x="185" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580208204433">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state width="1416" height="224" key="GridCell.Tab.0.bottom/0.0.1458.864@0.0.1458.864" timestamp="1580134466049" />
-    <state width="1416" height="224" key="GridCell.Tab.0.center" timestamp="1580134466049">
+    <state x="185" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1458.864@0.0.1458.864" timestamp="1580208204433" />
+    <state width="1416" height="224" key="GridCell.Tab.0.bottom" timestamp="1580208966221">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state width="1416" height="224" key="GridCell.Tab.0.center/0.0.1458.864@0.0.1458.864" timestamp="1580134466049" />
-    <state width="1416" height="224" key="GridCell.Tab.0.left" timestamp="1580134466049">
+    <state width="1416" height="224" key="GridCell.Tab.0.bottom/0.0.1458.864@0.0.1458.864" timestamp="1580208966221" />
+    <state width="1416" height="224" key="GridCell.Tab.0.center" timestamp="1580208966221">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state width="1416" height="224" key="GridCell.Tab.0.left/0.0.1458.864@0.0.1458.864" timestamp="1580134466049" />
-    <state width="1416" height="224" key="GridCell.Tab.0.right" timestamp="1580134466049">
+    <state width="1416" height="224" key="GridCell.Tab.0.center/0.0.1458.864@0.0.1458.864" timestamp="1580208966221" />
+    <state width="1416" height="224" key="GridCell.Tab.0.left" timestamp="1580208966220">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state width="1416" height="224" key="GridCell.Tab.0.right/0.0.1458.864@0.0.1458.864" timestamp="1580134466049" />
-    <state x="231" y="74" key="SettingsEditor" timestamp="1580054752250">
+    <state width="1416" height="224" key="GridCell.Tab.0.left/0.0.1458.864@0.0.1458.864" timestamp="1580208966220" />
+    <state width="1416" height="224" key="GridCell.Tab.0.right" timestamp="1580208966221">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state x="231" y="74" key="SettingsEditor/0.0.1458.864@0.0.1458.864" timestamp="1580054752250" />
+    <state width="1416" height="224" key="GridCell.Tab.0.right/0.0.1458.864@0.0.1458.864" timestamp="1580208966221" />
+    <state x="231" y="74" key="SettingsEditor" timestamp="1580208269266">
+      <screen x="0" y="0" width="1458" height="864" />
+    </state>
+    <state x="231" y="74" key="SettingsEditor/0.0.1458.864@0.0.1458.864" timestamp="1580208269266" />
     <state x="415" y="256" key="com.intellij.ide.util.TipDialog" timestamp="1580125172179">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
