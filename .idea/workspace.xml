@@ -3,15 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="0e0c27e4-3991-4e19-80d9-e0a96bc42b37" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/foodie-dev-api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/foodie-dev-api/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/foodie-dev-api/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/foodie-dev-api/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/foodie-dev-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/foodie-dev-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -35,6 +34,7 @@
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
+    <option name="flattenPackages" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -42,16 +42,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/foodie-dev-pojo/src/main/java/com/cong/pojo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/foodie-dev-mapper/src/main/resources/mapper" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Confirmation" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cong.controller" />
+      <recent name="com.cong.pojo" />
+      <recent name="com.cong.mapper" />
       <recent name="com.cong.my.mapper" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\javaProject\workspaces\foodie-dev\foodie-dev-pojo\src\main\java\com\cong\pojo" />
       <recent name="C:\javaProject\workspaces\foodie-dev\foodie-dev-mapper\src\main\resources\mapper" />
+      <recent name="C:\javaProject\workspaces\foodie-dev\foodie-dev-pojo\src\main\java\com\cong\pojo" />
       <recent name="C:\javaProject\workspaces\foodie-dev\foodie-dev-mapper\src\main\java\com\cong\mapper" />
     </key>
   </component>
@@ -93,26 +96,38 @@
       <screen x="0" y="0" width="1458" height="864" />
     </state>
     <state x="185" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1458.864@0.0.1458.864" timestamp="1580208204433" />
+    <state x="535" y="142" key="#com.intellij.ide.util.MemberChooser" timestamp="1580303953238">
+      <screen x="0" y="0" width="1458" height="864" />
+    </state>
+    <state x="535" y="142" key="#com.intellij.ide.util.MemberChooser/0.0.1458.864@0.0.1458.864" timestamp="1580303953238" />
+    <state x="364" y="357" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1580303591415">
+      <screen x="0" y="0" width="1458" height="864" />
+    </state>
+    <state x="364" y="357" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1458.864@0.0.1458.864" timestamp="1580303591415" />
+    <state x="487" y="312" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1580303596085">
+      <screen x="0" y="0" width="1458" height="864" />
+    </state>
+    <state x="487" y="312" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1458.864@0.0.1458.864" timestamp="1580303596085" />
     <state x="510" y="187" key="FileChooserDialogImpl" timestamp="1580220650362">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
     <state x="510" y="187" key="FileChooserDialogImpl/0.0.1458.864@0.0.1458.864" timestamp="1580220650362" />
-    <state width="1416" height="194" key="GridCell.Tab.0.bottom" timestamp="1580231118717">
+    <state width="1416" height="194" key="GridCell.Tab.0.bottom" timestamp="1580305553511">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state width="1416" height="194" key="GridCell.Tab.0.bottom/0.0.1458.864@0.0.1458.864" timestamp="1580231118717" />
-    <state width="1416" height="194" key="GridCell.Tab.0.center" timestamp="1580231118717">
+    <state width="1416" height="194" key="GridCell.Tab.0.bottom/0.0.1458.864@0.0.1458.864" timestamp="1580305553511" />
+    <state width="1416" height="194" key="GridCell.Tab.0.center" timestamp="1580305553511">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state width="1416" height="194" key="GridCell.Tab.0.center/0.0.1458.864@0.0.1458.864" timestamp="1580231118717" />
-    <state width="1416" height="194" key="GridCell.Tab.0.left" timestamp="1580231118717">
+    <state width="1416" height="194" key="GridCell.Tab.0.center/0.0.1458.864@0.0.1458.864" timestamp="1580305553511" />
+    <state width="1416" height="194" key="GridCell.Tab.0.left" timestamp="1580305553510">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state width="1416" height="194" key="GridCell.Tab.0.left/0.0.1458.864@0.0.1458.864" timestamp="1580231118717" />
-    <state width="1416" height="194" key="GridCell.Tab.0.right" timestamp="1580231118717">
+    <state width="1416" height="194" key="GridCell.Tab.0.left/0.0.1458.864@0.0.1458.864" timestamp="1580305553510" />
+    <state width="1416" height="194" key="GridCell.Tab.0.right" timestamp="1580305553511">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state width="1416" height="194" key="GridCell.Tab.0.right/0.0.1458.864@0.0.1458.864" timestamp="1580231118717" />
+    <state width="1416" height="194" key="GridCell.Tab.0.right/0.0.1458.864@0.0.1458.864" timestamp="1580305553511" />
     <state x="231" y="74" key="SettingsEditor" timestamp="1580208269266">
       <screen x="0" y="0" width="1458" height="864" />
     </state>

@@ -10,4 +10,5 @@ com\cong\mapper\UserAddressMapper.class
 com\cong\mapper\CarouselMapper.class
 com\cong\my\mapper\MyMapper.class
 com\cong\mapper\ItemsParamMapper.class
+com\cong\mapper\StuMapper.class
 com\cong\mapper\ItemsSpecMapper.class
