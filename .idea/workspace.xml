@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e0c27e4-3991-4e19-80d9-e0a96bc42b37" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/foodie-dev-api/src/main/java/com/cong/controller/StuFooController.java" beforeDir="false" afterPath="$PROJECT_DIR$/foodie-dev-api/src/main/java/com/cong/controller/StuFooController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foodie-dev-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/foodie-dev-api/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foodie-dev-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/foodie-dev-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foodie-dev-api/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/foodie-dev-api/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foodie-dev-service/src/main/java/com/cong/service/StuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/foodie-dev-service/src/main/java/com/cong/service/StuService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/foodie-dev-service/src/main/java/com/cong/service/impl/StuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/foodie-dev-service/src/main/java/com/cong/service/impl/StuServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foodie-dev-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/foodie-dev-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +22,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -45,7 +51,10 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/foodie-dev-mapper/src/main/resources/mapper" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Confirmation" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -60,7 +69,7 @@
       <recent name="C:\javaProject\workspaces\foodie-dev\foodie-dev-mapper\src\main\java\com\cong\mapper" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.TransTest">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.cong.Application" />
       <module name="foodie-dev-api" />
@@ -74,8 +83,41 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TransTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="foodie-dev-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.test" />
+      <option name="MAIN_CLASS_NAME" value="com.test.TransTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TransTest.myTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="foodie-dev-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.test" />
+      <option name="MAIN_CLASS_NAME" value="com.test.TransTest" />
+      <option name="METHOD_NAME" value="myTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TransTest" />
+        <item itemvalue="JUnit.TransTest.myTest" />
         <item itemvalue="Application.Application" />
       </list>
     </recent_temporary>
@@ -94,14 +136,18 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="322" y="91" key="#Project_Structure" timestamp="1580392507486">
+      <screen x="0" y="0" width="1458" height="864" />
+    </state>
+    <state x="322" y="91" key="#Project_Structure/0.0.1458.864@0.0.1458.864" timestamp="1580392507486" />
     <state x="185" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580208204433">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
     <state x="185" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1458.864@0.0.1458.864" timestamp="1580208204433" />
-    <state x="535" y="142" key="#com.intellij.ide.util.MemberChooser" timestamp="1580303953238">
+    <state x="535" y="142" key="#com.intellij.ide.util.MemberChooser" timestamp="1580392215913">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state x="535" y="142" key="#com.intellij.ide.util.MemberChooser/0.0.1458.864@0.0.1458.864" timestamp="1580303953238" />
+    <state x="535" y="142" key="#com.intellij.ide.util.MemberChooser/0.0.1458.864@0.0.1458.864" timestamp="1580392215913" />
     <state x="364" y="357" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1580303591415">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
@@ -114,26 +160,26 @@
       <screen x="0" y="0" width="1458" height="864" />
     </state>
     <state x="510" y="187" key="FileChooserDialogImpl/0.0.1458.864@0.0.1458.864" timestamp="1580220650362" />
-    <state width="1416" height="194" key="GridCell.Tab.0.bottom" timestamp="1580310271793">
+    <state width="1416" height="423" key="GridCell.Tab.0.bottom" timestamp="1580396166417">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state width="1416" height="194" key="GridCell.Tab.0.bottom/0.0.1458.864@0.0.1458.864" timestamp="1580310271793" />
-    <state width="1416" height="194" key="GridCell.Tab.0.center" timestamp="1580310271793">
+    <state width="1416" height="423" key="GridCell.Tab.0.bottom/0.0.1458.864@0.0.1458.864" timestamp="1580396166417" />
+    <state width="1416" height="423" key="GridCell.Tab.0.center" timestamp="1580396166417">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state width="1416" height="194" key="GridCell.Tab.0.center/0.0.1458.864@0.0.1458.864" timestamp="1580310271793" />
-    <state width="1416" height="194" key="GridCell.Tab.0.left" timestamp="1580310271793">
+    <state width="1416" height="423" key="GridCell.Tab.0.center/0.0.1458.864@0.0.1458.864" timestamp="1580396166417" />
+    <state width="1416" height="423" key="GridCell.Tab.0.left" timestamp="1580396166416">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state width="1416" height="194" key="GridCell.Tab.0.left/0.0.1458.864@0.0.1458.864" timestamp="1580310271793" />
-    <state width="1416" height="194" key="GridCell.Tab.0.right" timestamp="1580310271793">
+    <state width="1416" height="423" key="GridCell.Tab.0.left/0.0.1458.864@0.0.1458.864" timestamp="1580396166416" />
+    <state width="1416" height="423" key="GridCell.Tab.0.right" timestamp="1580396166417">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state width="1416" height="194" key="GridCell.Tab.0.right/0.0.1458.864@0.0.1458.864" timestamp="1580310271793" />
-    <state x="231" y="74" key="SettingsEditor" timestamp="1580208269266">
+    <state width="1416" height="423" key="GridCell.Tab.0.right/0.0.1458.864@0.0.1458.864" timestamp="1580396166417" />
+    <state x="231" y="74" key="SettingsEditor" timestamp="1580396078850">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
-    <state x="231" y="74" key="SettingsEditor/0.0.1458.864@0.0.1458.864" timestamp="1580208269266" />
+    <state x="231" y="74" key="SettingsEditor/0.0.1458.864@0.0.1458.864" timestamp="1580396078850" />
     <state x="415" y="256" key="com.intellij.ide.util.TipDialog" timestamp="1580125172179">
       <screen x="0" y="0" width="1458" height="864" />
     </state>
