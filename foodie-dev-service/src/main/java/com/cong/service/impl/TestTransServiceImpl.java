@@ -41,6 +41,12 @@ public class TestTransServiceImpl implements TestTransService {
     @Override
     public void testPropagationTrans() {
         stuService.saveParent();
-        stuService.saveChildren();
+
+        try {
+            stuService.saveChildren();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        int a = 1 / 0;
     }
 }

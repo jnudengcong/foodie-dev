@@ -52,7 +52,7 @@ public class StuServiceImpl implements StuService {
         stuMapper.insert(stu);
     }
 
-    @Transactional(propagation = Propagation.MANDATORY)
+    @Transactional(propagation = Propagation.NESTED)
     public void saveChildren() {
         saveChild1();
         int a = 1 / 0;
