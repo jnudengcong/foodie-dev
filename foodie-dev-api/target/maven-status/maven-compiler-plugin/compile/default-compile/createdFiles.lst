@@ -1,3 +1,4 @@
 com\cong\Application.class
 com\cong\controller\StuFooController.class
+com\cong\config\Swagger2.class
 com\cong\controller\HelloController.class
