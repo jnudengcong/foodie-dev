@@ -11,3 +11,4 @@ com\cong\pojo\ItemsImg.class
 com\cong\pojo\UserAddress.class
 com\cong\pojo\Users.class
 com\cong\pojo\OrderItems.class
+com\cong\pojo\bo\UserBO.class
