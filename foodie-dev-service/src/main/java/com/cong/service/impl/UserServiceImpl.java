@@ -71,8 +71,9 @@ public class UserServiceImpl implements UserService {
         // 默认性别为 保密
         user.setSex(Sex.secret.type);
 
-        user.setCreatedTime(new Date());
-        user.setUpdatedTime(new Date());
+        Date date = new Date();
+        user.setCreatedTime(date);
+        user.setUpdatedTime(date);
 
         usersMapper.insert(user);
 
