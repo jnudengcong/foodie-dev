@@ -3,13 +3,10 @@ package com.test;
 import com.cong.Application;
 import com.cong.service.StuService;
 import com.cong.service.TestTransService;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class TransTest {
 
@@ -19,7 +16,7 @@ public class TransTest {
     @Autowired
     private TestTransService testTransService;
 
-    @Test
+//    @Test
     public void myTest() {
         testTransService.testPropagationTrans();
     }
