@@ -25,5 +25,5 @@ hs_err_pid*
 *.dump
 
 # idea ignore
-.idea/*
+/.idea
 */target
