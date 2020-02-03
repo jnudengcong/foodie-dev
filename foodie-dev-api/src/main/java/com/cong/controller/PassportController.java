@@ -3,10 +3,13 @@ package com.cong.controller;
 import com.cong.pojo.bo.UserBO;
 import com.cong.service.UserService;
 import com.cong.utils.CONGJSONResult;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@Api(value = "注册登录", tags = {"用于注册登录的相关接口"})
 @RestController
 @RequestMapping("passport")
 public class PassportController {
@@ -14,6 +17,7 @@ public class PassportController {
     @Autowired
     private UserService userService;
 
+    @ApiOperation(value = "用户名是否存在", notes = "用户名是否存在", httpMethod = "GET")
     @GetMapping("/usernameIsExist")
     public CONGJSONResult usernameIsExist(@RequestParam String username) {
 
@@ -32,6 +36,7 @@ public class PassportController {
         return CONGJSONResult.ok();
     }
 
+    @ApiOperation(value = "用户注册", notes = "用户注册", httpMethod = "POST")
     @PostMapping("/registry")
     public CONGJSONResult registry(@RequestBody UserBO userBO) {
 
