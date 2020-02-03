@@ -1,5 +1,0 @@
-com\cong\Application.class
-com\cong\controller\HelloController.class
-com\cong\aspect\ServiceLogAspect.class
-com\cong\controller\StuFooController.class
-com\cong\config\Swagger2.class
