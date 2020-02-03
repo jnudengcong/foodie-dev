@@ -1,8 +1,10 @@
 package com.cong.controller;
 
+import com.cong.pojo.Users;
 import com.cong.pojo.bo.UserBO;
 import com.cong.service.UserService;
 import com.cong.utils.CONGJSONResult;
+import com.cong.utils.MD5Utils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
@@ -71,5 +73,26 @@ public class PassportController {
         userService.createUser(userBO);
 
         return CONGJSONResult.ok();
+    }
+
+    @ApiOperation(value = "用户登录", notes = "用户登录", httpMethod = "POST")
+    @PostMapping("/login")
+    public CONGJSONResult login(@RequestBody UserBO userBO) throws Exception {
+
+        String username = userBO.getUsername();
+        String password = userBO.getPassword();
+
+        // 0. 判断用户名和密码是否为空
+        if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
+            return CONGJSONResult.errorMsg("用户名或密码为空");
+        }
+
+        // 1. 实现登录
+        Users userResult = userService.queryUserForLogin(username, MD5Utils.getMD5Str(password));
+        if (userResult == null) {
+            return CONGJSONResult.errorMsg("用户名或密码不正确");
+        }
+
+        return CONGJSONResult.ok(userResult);
     }
 }
