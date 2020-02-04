@@ -1,6 +1,7 @@
 package com.cong.service;
 
 import com.cong.pojo.Category;
+import com.cong.pojo.vo.CategoryVO;
 
 import java.util.List;
 
@@ -12,4 +13,11 @@ public interface CategoryService {
      */
     public List<Category> queryAllRootLevelCat();
 
+
+    /**
+     * 根据一级分类id查询子分类信息
+     * @param rootCatId
+     * @return
+     */
+    public List<CategoryVO> getSubCatList(Integer rootCatId);
 }
