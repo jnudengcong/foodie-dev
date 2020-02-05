@@ -1,6 +1,6 @@
 package com.cong.pojo.vo;
 
-public class SubCategoryVo {
+public class SubCategoryVO {
 
     private Integer subId;
     private String subName;

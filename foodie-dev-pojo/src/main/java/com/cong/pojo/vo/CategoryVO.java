@@ -9,7 +9,7 @@ public class CategoryVO {
     private Integer type;
     private String fatherId;
 
-    private List<SubCategoryVo> subCatList;
+    private List<SubCategoryVO> subCatList;
 
     public Integer getId() {
         return id;
@@ -43,11 +43,11 @@ public class CategoryVO {
         this.fatherId = fatherId;
     }
 
-    public List<SubCategoryVo> getSubCatList() {
+    public List<SubCategoryVO> getSubCatList() {
         return subCatList;
     }
 
-    public void setSubCatList(List<SubCategoryVo> subCatList) {
+    public void setSubCatList(List<SubCategoryVO> subCatList) {
         this.subCatList = subCatList;
     }
 }
