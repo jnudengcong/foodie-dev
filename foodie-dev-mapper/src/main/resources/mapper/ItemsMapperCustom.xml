@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.cong.mapper.ItemsMapperCustom" >
-  <select id="queryItemComments" parameterType="Map" resultType="Map">
+  <resultMap id="myNemItemsVO" type="com.cong.pojo.vo.ItemCommentVO">
+    <result column="commentLevel" property="commentLevel" />
+    <result column="content" property="content" />
+    <result column="specName" property="specName" />
+    <result column="createdTime" property="createdTime" />
+    <result column="userFace" property="userFace" />
+    <result column="nickname" property="nickname" />
+  </resultMap>
+
+  <select id="queryItemComments" parameterType="Map" resultType="ItemCommentVO">
     SELECT
-      ic.comment_level as comment_level,
+      ic.comment_level as commentLevel,
       ic.content as content,
       ic.sepc_name as specName,
       ic.created_time as createdTime,
@@ -16,10 +25,10 @@
     ON
       ic.user_id = u.id
     WHERE
-      ic.item_id = 'cake-1001'
-    <if test="">
+      ic.item_id = #{paramsMap.itemId}
+    <if test=" paramsMap.level != null and paramsMap.level != '' ">
       AND
-      ic.comment_level = 1
+      ic.comment_level = #{paramsMap.level}
     </if>
   </select>
 </mapper>
