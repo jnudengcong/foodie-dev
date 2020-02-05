@@ -4,6 +4,7 @@ import com.cong.pojo.Items;
 import com.cong.pojo.ItemsImg;
 import com.cong.pojo.ItemsParam;
 import com.cong.pojo.ItemsSpec;
+import com.cong.pojo.vo.CommentLevelCountsVO;
 
 import java.util.List;
 
@@ -37,4 +38,9 @@ public interface ItemService {
      */
     public ItemsParam queryItemParam(String itemId);
 
+    /**
+     * 根据商品id查询商品的评价等级数量
+     * @param itemId
+     */
+    public CommentLevelCountsVO queryCommentCounts(String itemId);
 }
