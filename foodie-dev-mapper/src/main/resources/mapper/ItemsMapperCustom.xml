@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cong.mapper.ItemsMapperCustom" >
+  <select id="queryItemComments" parameterType="Map" resultType="Map">
+    SELECT
+      ic.comment_level as comment_level,
+      ic.content as content,
+      ic.sepc_name as specName,
+      ic.created_time as createdTime,
+      u.face as userFace,
+      u.nickname as nickname
+    FROM
+      items_comments ic
+    LEFT JOIN
+      users u
+    ON
+      ic.user_id = u.id
+    WHERE
+      ic.item_id = 'cake-1001'
+    <if test="">
+      AND
+      ic.comment_level = 1
+    </if>
+  </select>
+</mapper>
