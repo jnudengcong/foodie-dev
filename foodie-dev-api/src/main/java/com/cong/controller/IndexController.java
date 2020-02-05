@@ -4,6 +4,7 @@ import com.cong.enums.YesOrNo;
 import com.cong.pojo.Carousel;
 import com.cong.pojo.Category;
 import com.cong.pojo.vo.CategoryVO;
+import com.cong.pojo.vo.NewItemsVO;
 import com.cong.service.CarouselService;
 import com.cong.service.CategoryService;
 import com.cong.utils.CONGJSONResult;
@@ -58,6 +59,19 @@ public class IndexController {
         }
 
         List<CategoryVO> list = categoryService.getSubCatList(rootCatId);
+        return CONGJSONResult.ok(list);
+    }
+
+    @ApiOperation(value = "查询每个一级子分类下的最新6条数据", notes = "查询每个一级子分类下的最新6条数据", httpMethod = "GET")
+    @GetMapping("/sixNewItems/{rootCatId}")
+    public CONGJSONResult sixNewItems(
+            @ApiParam(name = "rootCatId", value = "一级分类id", required = true)
+            @PathVariable Integer rootCatId) {
+        if (rootCatId == null) {
+            return CONGJSONResult.errorMsg("分类不存在");
+        }
+
+        List<NewItemsVO> list = categoryService.getSixNewItemsLazy(rootCatId);
         return CONGJSONResult.ok(list);
     }
 }
