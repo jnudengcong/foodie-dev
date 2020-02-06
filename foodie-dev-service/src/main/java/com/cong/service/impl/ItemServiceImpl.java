@@ -6,6 +6,7 @@ import com.cong.pojo.*;
 import com.cong.pojo.vo.CommentLevelCountsVO;
 import com.cong.pojo.vo.ItemCommentVO;
 import com.cong.service.ItemService;
+import com.cong.utils.DesensitizationUtil;
 import com.cong.utils.PagedGridResult;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -122,6 +123,9 @@ public class ItemServiceImpl implements ItemService {
         PageHelper.startPage(page, pageSize);
 
         List<ItemCommentVO> list = itemsMapperCustom.queryItemComments(map);
+        for (ItemCommentVO vo : list) {
+            vo.setNickname(DesensitizationUtil.commonDisplay(vo.getNickname()));
+        }
 
         return setterPagedGrid(list, page);
     }
