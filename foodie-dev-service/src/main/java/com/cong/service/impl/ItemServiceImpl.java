@@ -5,6 +5,7 @@ import com.cong.mapper.*;
 import com.cong.pojo.*;
 import com.cong.pojo.vo.CommentLevelCountsVO;
 import com.cong.pojo.vo.ItemCommentVO;
+import com.cong.pojo.vo.SearchItemsVO;
 import com.cong.service.ItemService;
 import com.cong.utils.DesensitizationUtil;
 import com.cong.utils.PagedGridResult;
@@ -139,5 +140,20 @@ public class ItemServiceImpl implements ItemService {
         grid.setRecords(pageList.getTotal()); // 总记录数
 
         return grid;
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public PagedGridResult searchItems(String keywords, String sort, Integer page, Integer pageSize) {
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("keywords", keywords);
+        map.put("sort", sort);
+
+        PageHelper.startPage(page, pageSize);
+
+        List<SearchItemsVO> list = itemsMapperCustom.searchItems(map);
+
+        return setterPagedGrid(list, page);
     }
 }
