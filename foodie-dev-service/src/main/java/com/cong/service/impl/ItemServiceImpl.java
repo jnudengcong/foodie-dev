@@ -6,6 +6,9 @@ import com.cong.pojo.*;
 import com.cong.pojo.vo.CommentLevelCountsVO;
 import com.cong.pojo.vo.ItemCommentVO;
 import com.cong.service.ItemService;
+import com.cong.utils.PagedGridResult;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -102,13 +105,35 @@ public class ItemServiceImpl implements ItemService {
 
     @Transactional(propagation = Propagation.SUPPORTS)
     @Override
-    public List<ItemCommentVO> queryPagedComments(String itemId, Integer level) {
+    public PagedGridResult queryPagedComments(String itemId,
+                                                  Integer level,
+                                                  Integer page,
+                                                  Integer pageSize) {
         Map<String, Object> map = new HashMap<>();
         map.put("itemId", itemId);
         map.put("level", level);
 
+        // mybatis-pagehelper
+
+        /**
+         * page: 第几页
+         * pageSize: 每页显示条数
+         */
+        PageHelper.startPage(page, pageSize);
+
         List<ItemCommentVO> list = itemsMapperCustom.queryItemComments(map);
 
-        return list;
+        return setterPagedGrid(list, page);
+    }
+
+    private PagedGridResult setterPagedGrid(List<?> list, Integer page) {
+        PageInfo<?> pageList = new PageInfo<>(list);
+        PagedGridResult grid = new PagedGridResult();
+        grid.setPage(page); // 当前页数
+        grid.setRows(list); // 当前页展示的列表
+        grid.setTotal(pageList.getPages()); // 总页数
+        grid.setRecords(pageList.getTotal()); // 总记录数
+
+        return grid;
     }
 }
