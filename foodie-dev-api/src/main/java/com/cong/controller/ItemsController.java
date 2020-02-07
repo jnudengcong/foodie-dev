@@ -122,4 +122,33 @@ public class ItemsController {
 
         return CONGJSONResult.ok(grid);
     }
+
+    @ApiOperation(value = "根据分类id搜索商品列表", notes = "根据分类id搜索商品列表", httpMethod = "GET")
+    @GetMapping("/catItems")
+    public CONGJSONResult catItems(
+            @ApiParam(name = "catId", value = "关键字", required = true)
+            @RequestParam Integer catId,
+            @ApiParam(name = "sort", value = "排序", required = false)
+            @RequestParam String sort,
+            @ApiParam(name = "page", value = "查询页数", required = false)
+            @RequestParam Integer page,
+            @ApiParam(name = "pageSize", value = "查询每页的记录数", required = false)
+            @RequestParam Integer pageSize) {
+
+        if (catId == null) {
+            return CONGJSONResult.errorMsg(null);
+        }
+
+        if (page == null) {
+            page = 1;
+        }
+
+        if (pageSize == null) {
+            pageSize = BaseController.PAGE_SIZE;
+        }
+
+        PagedGridResult grid = itemService.searchItems(catId, sort, page, pageSize);
+
+        return CONGJSONResult.ok(grid);
+    }
 }
