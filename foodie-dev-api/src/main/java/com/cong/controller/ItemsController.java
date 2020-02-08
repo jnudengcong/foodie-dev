@@ -6,6 +6,7 @@ import com.cong.pojo.ItemsParam;
 import com.cong.pojo.ItemsSpec;
 import com.cong.pojo.vo.CommentLevelCountsVO;
 import com.cong.pojo.vo.ItemInfoVO;
+import com.cong.pojo.vo.ShopcartVO;
 import com.cong.service.ItemService;
 import com.cong.utils.CONGJSONResult;
 import com.cong.utils.PagedGridResult;
@@ -150,5 +151,21 @@ public class ItemsController {
         PagedGridResult grid = itemService.searchItems(catId, sort, page, pageSize);
 
         return CONGJSONResult.ok(grid);
+    }
+
+    // 用于用户长时间未登录网站，刷新购物车中的数据（主要是商品价格）
+    @ApiOperation(value = "根据商品规格ids查找最新的商品数据", notes = "根据商品规格ids查找最新的商品数据", httpMethod = "GET")
+    @GetMapping("/refresh")
+    public CONGJSONResult refresh(
+            @ApiParam(name = "itemSpecIds", value = "关键字", required = true)
+            @RequestParam String itemSpecIds) {
+
+        if (itemSpecIds == null) {
+            return CONGJSONResult.ok();
+        }
+
+        List<ShopcartVO> list = itemService.queryItemsBySpecIds(itemSpecIds);
+
+        return CONGJSONResult.ok(list);
     }
 }
