@@ -1,5 +1,6 @@
 package com.cong.service.impl;
 
+import com.cong.enums.YesOrNo;
 import com.cong.mapper.UserAddressMapper;
 import com.cong.pojo.UserAddress;
 import com.cong.pojo.bo.AddressBO;
@@ -82,5 +83,27 @@ public class AddressServiceImpl implements AddressService {
         userAddress.setId(addressId);
 
         userAddressMapper.delete(userAddress);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void updateUserAddressToBeDefault(String userId, String addressId) {
+
+        // 1. 将所有的默认地址设为非默认地址
+        UserAddress queryAddress = new UserAddress();
+        queryAddress.setUserId(userId);
+        queryAddress.setIsDefault(YesOrNo.YES.type);
+        List<UserAddress> list = userAddressMapper.select(queryAddress);
+        for (UserAddress ua : list) {
+            ua.setIsDefault(YesOrNo.NO.type);
+            userAddressMapper.updateByPrimaryKeySelective(ua);
+        }
+
+        // 2. 根据 addressId 设置该地址为默认地址
+        UserAddress defaultAddress = new UserAddress();
+        defaultAddress.setId(addressId);
+        defaultAddress.setUserId(userId);
+        defaultAddress.setIsDefault(YesOrNo.YES.type);
+        userAddressMapper.updateByPrimaryKeySelective(defaultAddress);
     }
 }
