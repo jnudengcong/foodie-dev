@@ -109,4 +109,18 @@ public class AddressController {
 
         return CONGJSONResult.ok();
     }
+
+    @ApiOperation(value = "用户删除地址", notes = "用户删除地址", httpMethod = "POST")
+    @PostMapping("/delete")
+    public CONGJSONResult delete(@RequestParam String userId,
+                                 @RequestParam String addressId) {
+
+        if (StringUtils.isBlank(userId) || StringUtils.isBlank(addressId)) {
+            return CONGJSONResult.errorMsg("");
+        }
+
+        addressService.deleteUserAddress(userId, addressId);
+
+        return CONGJSONResult.ok();
+    }
 }
