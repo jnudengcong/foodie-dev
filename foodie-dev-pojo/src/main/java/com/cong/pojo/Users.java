@@ -73,7 +73,7 @@ public class Users {
      *
      * @return id - 主键id 用户id
      */
-    public String getID() {
+    public String getId() {
         return id;
     }
 
@@ -82,7 +82,7 @@ public class Users {
      *
      * @param id 主键id 用户id
      */
-    public void setID(String id) {
+    public void setId(String id) {
         this.id = id;
     }
 

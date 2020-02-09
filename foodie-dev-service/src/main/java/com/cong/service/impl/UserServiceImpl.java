@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
         Users user = new Users();
 
         String userID = sid.nextShort();
-        user.setID(userID);
+        user.setId(userID);
 
         user.setUsername(userBO.getUsername());
 
