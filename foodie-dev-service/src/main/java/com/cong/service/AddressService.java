@@ -1,6 +1,7 @@
 package com.cong.service;
 
 import com.cong.pojo.UserAddress;
+import com.cong.pojo.bo.AddressBO;
 
 import java.util.List;
 
@@ -12,5 +13,11 @@ public interface AddressService {
      * @return
      */
     public List<UserAddress> queryAll(String userId);
+
+    /**
+     * 用户新增地址
+     * @param addressBO
+     */
+    public void addNewUserAddress(AddressBO addressBO);
 
 }
