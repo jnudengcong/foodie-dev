@@ -1,5 +1,6 @@
 package com.cong.controller;
 
+import com.cong.enums.PayMethod;
 import com.cong.pojo.bo.SubmitOrderBO;
 import com.cong.utils.CONGJSONResult;
 import io.swagger.annotations.Api;
@@ -17,6 +18,11 @@ public class OrdersController {
     @ApiOperation(value = "用户下单", notes = "用户下单", httpMethod = "POST")
     @PostMapping("/create")
     public CONGJSONResult create(@RequestBody SubmitOrderBO submitOrderBO) {
+
+        Integer payMethod = submitOrderBO.getPayMethod();
+        if (!payMethod.equals(PayMethod.WEIXIN.type) && !payMethod.equals(PayMethod.ALIPAY.type)) {
+            return CONGJSONResult.errorMsg("支付方式不支持！");
+        }
 
         System.out.println(submitOrderBO.toString());
 
