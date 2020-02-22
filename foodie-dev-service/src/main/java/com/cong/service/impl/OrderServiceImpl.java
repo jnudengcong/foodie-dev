@@ -1,7 +1,9 @@
 package com.cong.service.impl;
 
+import com.cong.enums.OrderStatusEnum;
 import com.cong.enums.YesOrNo;
 import com.cong.mapper.OrderItemsMapper;
+import com.cong.mapper.OrderStatusMapper;
 import com.cong.mapper.OrdersMapper;
 import com.cong.pojo.*;
 import com.cong.pojo.bo.SubmitOrderBO;
@@ -24,6 +26,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderItemsMapper orderItemsMapper;
+
+    @Autowired
+    private OrderStatusMapper orderStatusMapper;
 
     @Autowired
     private AddressService addressService;
@@ -91,7 +96,7 @@ public class OrderServiceImpl implements OrderService {
             Items items = itemService.queryItemById(itemId);
             String imgUrl = itemService.queryItemMainImgById(itemId);
 
-            // 2.3 循环保存自订单数据到数据库
+            // 2.3 循环保存子订单数据到数据库
             String subOrderId = sid.nextShort();
             OrderItems subOrderItem = new OrderItems();
             subOrderItem.setId(subOrderId);
@@ -103,6 +108,9 @@ public class OrderServiceImpl implements OrderService {
             subOrderItem.setItemSpecName(itemSpec.getName());
             subOrderItem.setPrice(itemSpec.getPriceDiscount());
             orderItemsMapper.insert(subOrderItem);
+
+            // 2.4 在用户提交订单以后，规格表中需要扣除库存
+            itemService.decreaseItemSpecStock(itemSpecId, buyCounts);
         }
 
         newOrder.setTotalAmount(totalAmount);
@@ -110,6 +118,10 @@ public class OrderServiceImpl implements OrderService {
         ordersMapper.insert(newOrder);
 
         // 3. 保存订单状态表
-
+        OrderStatus waitPayOrderStatus = new OrderStatus();
+        waitPayOrderStatus.setOrderId(orderId);
+        waitPayOrderStatus.setOrderStatus(OrderStatusEnum.WAIT_PAY.type);
+        waitPayOrderStatus.setCreatedTime(new Date());
+        orderStatusMapper.insert(waitPayOrderStatus);
     }
 }
