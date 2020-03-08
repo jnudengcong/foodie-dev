@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public void createOrder(SubmitOrderBO submitOrderBO) {
+    public String createOrder(SubmitOrderBO submitOrderBO) {
 
         String userId = submitOrderBO.getUserId();
         String addressId = submitOrderBO.getAddressId();
@@ -101,10 +101,11 @@ public class OrderServiceImpl implements OrderService {
             OrderItems subOrderItem = new OrderItems();
             subOrderItem.setId(subOrderId);
             subOrderItem.setOrderId(orderId);
-            subOrderItem.setItemSpecId(itemSpecId);
-            subOrderItem.setBuyCounts(buyCounts);
-            subOrderItem.setItemImg(imgUrl);
+            subOrderItem.setItemId(itemId);
             subOrderItem.setItemName(items.getItemName());
+            subOrderItem.setItemImg(imgUrl);
+            subOrderItem.setBuyCounts(buyCounts);
+            subOrderItem.setItemSpecId(itemSpecId);
             subOrderItem.setItemSpecName(itemSpec.getName());
             subOrderItem.setPrice(itemSpec.getPriceDiscount());
             orderItemsMapper.insert(subOrderItem);
@@ -123,5 +124,7 @@ public class OrderServiceImpl implements OrderService {
         waitPayOrderStatus.setOrderStatus(OrderStatusEnum.WAIT_PAY.type);
         waitPayOrderStatus.setCreatedTime(new Date());
         orderStatusMapper.insert(waitPayOrderStatus);
+
+        return orderId;
     }
 }

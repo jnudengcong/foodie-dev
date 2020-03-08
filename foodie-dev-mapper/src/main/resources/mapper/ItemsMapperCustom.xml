@@ -161,7 +161,7 @@
 
   <update id="decreaseItemSpecStock">
     update
-      item_spec
+      items_spec
     set
       stock = stock - #{pendingCounts}
     where
