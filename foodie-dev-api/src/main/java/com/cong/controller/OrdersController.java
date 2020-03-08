@@ -3,6 +3,8 @@ package com.cong.controller;
 import com.cong.enums.OrderStatusEnum;
 import com.cong.enums.PayMethod;
 import com.cong.pojo.bo.SubmitOrderBO;
+import com.cong.pojo.vo.MerchantOrdersVO;
+import com.cong.pojo.vo.OrderVO;
 import com.cong.service.OrderService;
 import com.cong.utils.CONGJSONResult;
 import io.swagger.annotations.Api;
@@ -39,7 +41,10 @@ public class OrdersController extends BaseController {
         System.out.println(submitOrderBO.toString());
 
         // 1. 创建订单
-        String orderId = orderService.createOrder(submitOrderBO);
+        OrderVO orderVO = orderService.createOrder(submitOrderBO);
+        String orderId = orderVO.getOrderId();
+        MerchantOrdersVO merchantOrdersVO = orderVO.getMerchantOrdersVO();
+        merchantOrdersVO.setReturnUrl(payReturnUrl);
 
         // 2. 创建订单以后，移除购物车中已结算（已提交）的商品
         // TODO 整合redis之后，完善购物车中的已结算商品清除，并且同步到前端的cookie
