@@ -153,4 +153,9 @@ public class OrderServiceImpl implements OrderService {
 
         orderStatusMapper.updateByPrimaryKeySelective(paidStatus);
     }
+
+    @Override
+    public OrderStatus queryOrderStatusInfo(String orderId) {
+        return orderStatusMapper.selectByPrimaryKey(orderId);
+    }
 }
