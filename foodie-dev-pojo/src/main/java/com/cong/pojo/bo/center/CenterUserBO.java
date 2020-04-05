@@ -1,7 +1,9 @@
 package com.cong.pojo.bo.center;
 
 import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.*;
 import java.util.Date;
 
 public class CenterUserBO {
@@ -15,18 +17,25 @@ public class CenterUserBO {
     @ApiModelProperty(value = "确认密码", name = "confirmPassword", example = "123456", required = false)
     private String confirmPassword;
 
+    @NotBlank(message = "用户昵称不能为空")
+    @Length(max = 12, message = "用户昵称不能超过12位")
     @ApiModelProperty(value = "用户昵称", name = "nickname", example = "杰森", required = false)
     private String nickname;
 
+    @Length(max = 12, message = "用户真实姓名不能超过12位")
     @ApiModelProperty(value = "真实姓名", name = "realname", example = "杰森", required = false)
     private String realname;
 
+    @Pattern(regexp = "^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\\d{8})$", message = "手机号格式不正确")
     @ApiModelProperty(value = "手机号", name = "mobile", example = "13999999999", required = false)
     private String mobile;
 
+    @Email
     @ApiModelProperty(value = "邮箱", name = "email", example = "123@qq.com", required = false)
     private String email;
 
+    @Min(value = 0, message = "性别选择不正确")
+    @Max(value = 2, message = "性别选择不正确")
     @ApiModelProperty(value = "性别", name = "sex", example = "0：女， 1：男， 2：保密", required = false)
     private Integer sex;
 
@@ -103,5 +112,20 @@ public class CenterUserBO {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    @Override
+    public String toString() {
+        return "CenterUserBO{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", confirmPassword='" + confirmPassword + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", realname='" + realname + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", email='" + email + '\'' +
+                ", sex=" + sex +
+                ", birthday=" + birthday +
+                '}';
     }
 }
