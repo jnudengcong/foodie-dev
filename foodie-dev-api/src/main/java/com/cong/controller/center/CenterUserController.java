@@ -3,6 +3,7 @@ package com.cong.controller.center;
 import com.cong.controller.BaseController;
 import com.cong.pojo.Users;
 import com.cong.pojo.bo.center.CenterUserBO;
+import com.cong.resource.FileUpload;
 import com.cong.service.center.CenterUserService;
 import com.cong.utils.CONGJSONResult;
 import com.cong.utils.CookieUtils;
@@ -37,6 +38,9 @@ public class CenterUserController extends BaseController {
     @Autowired
     private CenterUserService centerUserService;
 
+    @Autowired
+    private FileUpload fileUpload;
+
     @ApiOperation(value = "用户头像修改", notes = "用户头像修改", httpMethod = "POST")
     @PostMapping("/uploadFace")
     public CONGJSONResult uploadFace(
@@ -47,7 +51,8 @@ public class CenterUserController extends BaseController {
             HttpServletRequest request, HttpServletResponse response) {
 
         // 定义头像保存的地址
-        String fileSpace = IMAGE_USER_FACE_LOCATION;
+//        String fileSpace = IMAGE_USER_FACE_LOCATION;
+        String fileSpace = fileUpload.getImageUserFaceLocation();
         // 在路径上为每一个用户增加一个userid，用于区分不同用户上传
         String uploadPathPrefix = File.separator + userId;
 
