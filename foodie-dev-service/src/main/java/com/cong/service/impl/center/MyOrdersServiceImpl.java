@@ -1,9 +1,12 @@
 package com.cong.service.impl.center;
 
 import com.cong.enums.OrderStatusEnum;
+import com.cong.enums.YesOrNo;
 import com.cong.mapper.OrderStatusMapper;
+import com.cong.mapper.OrdersMapper;
 import com.cong.mapper.OrdersMapperCustom;
 import com.cong.pojo.OrderStatus;
+import com.cong.pojo.Orders;
 import com.cong.pojo.vo.MyOrdersVO;
 import com.cong.service.center.MyOrdersService;
 import com.cong.utils.PagedGridResult;
@@ -29,6 +32,9 @@ public class MyOrdersServiceImpl implements MyOrdersService {
 
     @Autowired
     private OrderStatusMapper orderStatusMapper;
+
+    @Autowired
+    private OrdersMapper ordersMapper;
 
     @Autowired
     private Sid sid;
@@ -74,5 +80,53 @@ public class MyOrdersServiceImpl implements MyOrdersService {
         criteria.andEqualTo("orderStatus", OrderStatusEnum.WAIT_DELIVER.type);
 
         orderStatusMapper.updateByExampleSelective(updateOrder, example);
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public Orders queryMyOrder(String userId, String orderId) {
+
+        Orders orders = new Orders();
+        orders.setUserId(userId);
+        orders.setId(orderId);
+        orders.setIsDelete(YesOrNo.NO.type);
+
+        return ordersMapper.selectOne(orders);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public boolean updateReceiveOrderStatus(String orderId) {
+
+        OrderStatus updateOrder = new OrderStatus();
+        updateOrder.setOrderStatus(OrderStatusEnum.SUCCESS.type);
+        updateOrder.setSuccessTime(new Date());
+
+        Example example = new Example(OrderStatus.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("orderId", orderId);
+        criteria.andEqualTo("orderStatus", OrderStatusEnum.WAIT_RECEIVE.type);
+
+        int result = orderStatusMapper.updateByExampleSelective(updateOrder, example);
+
+        return result == 1;
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public boolean deleteOrder(String userId, String orderId) {
+
+        Orders updateOrder = new Orders();
+        updateOrder.setIsDelete(YesOrNo.YES.type);
+        updateOrder.setUpdatedTime(new Date());
+
+        Example example = new Example(Orders.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("id", orderId);
+        criteria.andEqualTo("userId", userId);
+
+        int result = ordersMapper.updateByExampleSelective(updateOrder, example);
+
+        return result == 1;
     }
 }
