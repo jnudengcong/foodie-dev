@@ -47,4 +47,18 @@ public class MyOrdersController extends BaseController {
 
         return CONGJSONResult.ok(grid);
     }
+
+    // 商家发货没有后端，所以这个接口仅仅只是用于模拟
+    @ApiOperation(value = "商家发货", notes = "商家发货", httpMethod = "GET")
+    @GetMapping("/deliver")
+    public CONGJSONResult deliver(
+            @ApiParam(name = "orderId", value = "订单id", required = true)
+            @RequestParam String orderId) throws Exception {
+
+        if (StringUtils.isBlank(orderId)) {
+            return CONGJSONResult.errorMsg("订单ID不能为空");
+        }
+        myOrdersService.updateDeliverOrderStatus(orderId);
+        return CONGJSONResult.ok();
+    }
 }
