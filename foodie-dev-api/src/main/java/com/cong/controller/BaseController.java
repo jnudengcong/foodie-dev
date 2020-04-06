@@ -1,5 +1,9 @@
 package com.cong.controller;
 
+import com.cong.pojo.Orders;
+import com.cong.service.center.MyOrdersService;
+import com.cong.utils.CONGJSONResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.File;
@@ -26,4 +30,20 @@ public class BaseController {
                                                                 File.separator + "images" +
                                                                 File.separator + "foodie" +
                                                                 File.separator + "faces";
+
+    @Autowired
+    public MyOrdersService myOrdersService;
+
+    /**
+     * 用于验证用户和订单是否有联系，避免非法用户调用
+     * @return
+     */
+    public CONGJSONResult checkUserOrder(String userId, String orderId) {
+        Orders order = myOrdersService.queryMyOrder(userId, orderId);
+        if (order == null) {
+            return CONGJSONResult.errorMsg("订单不存在！");
+        }
+
+        return CONGJSONResult.ok(order);
+    }
 }

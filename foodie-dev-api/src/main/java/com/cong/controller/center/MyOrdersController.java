@@ -1,7 +1,6 @@
 package com.cong.controller.center;
 
 import com.cong.controller.BaseController;
-import com.cong.pojo.Orders;
 import com.cong.service.center.MyOrdersService;
 import com.cong.utils.CONGJSONResult;
 import com.cong.utils.PagedGridResult;
@@ -89,14 +88,14 @@ public class MyOrdersController extends BaseController {
      * 用于验证用户和订单是否有联系，避免非法用户调用
      * @return
      */
-    private CONGJSONResult checkUserOrder(String userId, String orderId) {
-        Orders order = myOrdersService.queryMyOrder(userId, orderId);
-        if (order == null) {
-            return CONGJSONResult.errorMsg("订单不存在！");
-        }
-
-        return CONGJSONResult.ok();
-    }
+//    private CONGJSONResult checkUserOrder(String userId, String orderId) {
+//        Orders order = myOrdersService.queryMyOrder(userId, orderId);
+//        if (order == null) {
+//            return CONGJSONResult.errorMsg("订单不存在！");
+//        }
+//
+//        return CONGJSONResult.ok();
+//    }
 
     @ApiOperation(value = "用户删除订单", notes = "用户删除订单", httpMethod = "POST")
     @PostMapping("/delete")
