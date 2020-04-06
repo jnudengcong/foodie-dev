@@ -9,7 +9,10 @@
     <result column="postAmount" property="postAmount" />
     <result column="orderStatus" property="orderStatus" />
 
-    <collection property="subOrderItemList" ofType="com.cong.pojo.vo.MySubOrderItemVO">
+    <collection property="subOrderItemList"
+                select="getSubItems"
+                column="orderId"
+                ofType="com.cong.pojo.vo.MySubOrderItemVO">
       <result column="itemId" property="itemId" />
       <result column="itemName" property="itemName" />
       <result column="itemImg" property="itemImg" />
@@ -26,21 +29,12 @@
       od.pay_method as payMethod,
       od.real_pay_amount as realPayAmount,
       od.post_amount as postAmount,
-      os.order_status as orderStatus,
-      oi.item_id as itemId,
-      oi.item_name as itemName,
-      oi.item_img as itemImg,
-      oi.item_spec_name as itemSpecName,
-      oi.buy_counts as buyCounts,
-      oi.price as price
+      os.order_status as orderStatus
     FROM
       orders od
     LEFT JOIN
       order_status os
     ON od.id = os.order_id
-    LEFT JOIN
-      order_items oi
-    ON od.id = oi.order_id
     WHERE
       od.user_id = #{paramsMap.userId}
     AND
@@ -50,6 +44,53 @@
       </if>
     ORDER BY
       od.updated_time ASC
+  </select>
+
+  <select id="getSubItems" parameterType="String" resultType="com.cong.pojo.vo.MySubOrderItemVO">
+    SELECT
+      oi.item_id as itemId,
+      oi.item_name as itemName,
+      oi.item_img as itemImg,
+      oi.item_spec_name as itemSpecName,
+      oi.buy_counts as buyCounts,
+      oi.price as price
+    FROM
+      order_items oi
+    WHERE
+      oi.order_id = #{orderId}
+  </select>
+
+  <select id="queryMyOrdersDoNotUse" resultMap="myOrdersVO" parameterType="map">
+    SELECT
+    od.id as orderId,
+    od.created_time as createdTime,
+    od.pay_method as payMethod,
+    od.real_pay_amount as realPayAmount,
+    od.post_amount as postAmount,
+    os.order_status as orderStatus,
+    oi.item_id as itemId,
+    oi.item_name as itemName,
+    oi.item_img as itemImg,
+    oi.item_spec_name as itemSpecName,
+    oi.buy_counts as buyCounts,
+    oi.price as price
+    FROM
+    orders od
+    LEFT JOIN
+    order_status os
+    ON od.id = os.order_id
+    LEFT JOIN
+    order_items oi
+    ON od.id = oi.order_id
+    WHERE
+    od.user_id = #{paramsMap.userId}
+    AND
+    od.is_delete = 0
+    <if test="paramsMap.orderStatus != null">
+      AND os.order_status = #{paramsMap.orderStatus}
+    </if>
+    ORDER BY
+    od.updated_time ASC
   </select>
 
 </mapper>
