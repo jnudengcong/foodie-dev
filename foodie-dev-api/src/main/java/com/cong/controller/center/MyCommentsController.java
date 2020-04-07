@@ -74,8 +74,7 @@ public class MyCommentsController extends BaseController {
             return CONGJSONResult.errorMsg("评论内容不能为空！");
         }
 
-        List<OrderItems> list = myCommentsService.queryPendingComment(orderId);
-
-        return CONGJSONResult.ok(list);
+        myCommentsService.saveComments(orderId, userId, commentList);
+        return CONGJSONResult.ok();
     }
 }
