@@ -22,7 +22,7 @@ public class BaseController {
 
     // 微信支付 -> 支付中心 -> 电商平台
     //                    |->    回调通知的url
-    public static final String payReturnUrl = "http://2n2jtf.natappfree.cc/orders/notifyMerchantOrderPaid";
+    public static final String payReturnUrl = "http://m9qaj8.natappfree.cc/orders/notifyMerchantOrderPaid";
 
     // 用户上传头像的位置
     public static final String IMAGE_USER_FACE_LOCATION = "C:" + File.separator + "javaProject" +
