@@ -22,10 +22,10 @@ public class MyOrdersController extends BaseController {
 
     @ApiOperation(value = "查询订单列表", notes = "查询订单列表", httpMethod = "POST")
     @PostMapping("/query")
-    public CONGJSONResult comments(
+    public CONGJSONResult query(
             @ApiParam(name = "userId", value = "用户id", required = true)
             @RequestParam String userId,
-            @ApiParam(name = "orderStatus", value = "订单状态", required = false)
+            @ApiParam(name = "orderStatus", value = "订单状态", required = true)
             @RequestParam Integer orderStatus,
             @ApiParam(name = "page", value = "查询页数", required = false)
             @RequestParam Integer page,

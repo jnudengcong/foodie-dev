@@ -8,9 +8,11 @@ import com.cong.pojo.bo.center.OrderItemsCommentBO;
 import com.cong.service.center.MyCommentsService;
 import com.cong.service.center.MyOrdersService;
 import com.cong.utils.CONGJSONResult;
+import com.cong.utils.PagedGridResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -76,5 +78,32 @@ public class MyCommentsController extends BaseController {
 
         myCommentsService.saveComments(orderId, userId, commentList);
         return CONGJSONResult.ok();
+    }
+
+    @ApiOperation(value = "查询我的评价", notes = "查询我的评价", httpMethod = "POST")
+    @PostMapping("/query")
+    public CONGJSONResult query(
+            @ApiParam(name = "userId", value = "用户id", required = true)
+            @RequestParam String userId,
+            @ApiParam(name = "page", value = "查询页数", required = false)
+            @RequestParam Integer page,
+            @ApiParam(name = "pageSize", value = "查询每页的记录数", required = false)
+            @RequestParam Integer pageSize) {
+
+        if (StringUtils.isBlank(userId)) {
+            return CONGJSONResult.errorMsg(null);
+        }
+
+        if (page == null) {
+            page = 1;
+        }
+
+        if (pageSize == null) {
+            pageSize = COMMON_PAGE_SIZE;
+        }
+
+        PagedGridResult grid = myCommentsService.queryMyComments(userId, page, pageSize);
+
+        return CONGJSONResult.ok(grid);
     }
 }
