@@ -1,6 +1,7 @@
 package com.cong.controller.center;
 
 import com.cong.controller.BaseController;
+import com.cong.pojo.vo.OrderStatusCountsVO;
 import com.cong.service.center.MyOrdersService;
 import com.cong.utils.CONGJSONResult;
 import com.cong.utils.PagedGridResult;
@@ -19,6 +20,21 @@ public class MyOrdersController extends BaseController {
 
     @Autowired
     private MyOrdersService myOrdersService;
+
+    @ApiOperation(value = "获得订单数概况", notes = "获得订单数概况", httpMethod = "POST")
+    @PostMapping("/statusCounts")
+    public CONGJSONResult statusCounts(
+            @ApiParam(name = "userId", value = "用户id", required = true)
+            @RequestParam String userId) {
+
+        if (StringUtils.isBlank(userId)) {
+            return CONGJSONResult.errorMsg(null);
+        }
+
+        OrderStatusCountsVO result = myOrdersService.getOrderStatusCounts(userId);
+
+        return CONGJSONResult.ok(result);
+    }
 
     @ApiOperation(value = "查询订单列表", notes = "查询订单列表", httpMethod = "POST")
     @PostMapping("/query")
@@ -116,5 +132,32 @@ public class MyOrdersController extends BaseController {
         }
 
         return CONGJSONResult.ok();
+    }
+
+    @ApiOperation(value = "查询订单动向", notes = "查询订单动向", httpMethod = "POST")
+    @PostMapping("/trend")
+    public CONGJSONResult trend(
+            @ApiParam(name = "userId", value = "用户id", required = true)
+            @RequestParam String userId,
+            @ApiParam(name = "page", value = "查询页数", required = false)
+            @RequestParam Integer page,
+            @ApiParam(name = "pageSize", value = "查询每页的记录数", required = false)
+            @RequestParam Integer pageSize) {
+
+        if (StringUtils.isBlank(userId)) {
+            return CONGJSONResult.errorMsg(null);
+        }
+
+        if (page == null) {
+            page = 1;
+        }
+
+        if (pageSize == null) {
+            pageSize = COMMON_PAGE_SIZE;
+        }
+
+        PagedGridResult grid = myOrdersService.getMyOrderTrend(userId, page, pageSize);
+
+        return CONGJSONResult.ok(grid);
     }
 }

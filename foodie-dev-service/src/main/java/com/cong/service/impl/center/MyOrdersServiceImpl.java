@@ -8,10 +8,10 @@ import com.cong.mapper.OrdersMapperCustom;
 import com.cong.pojo.OrderStatus;
 import com.cong.pojo.Orders;
 import com.cong.pojo.vo.MyOrdersVO;
+import com.cong.pojo.vo.OrderStatusCountsVO;
 import com.cong.service.center.MyOrdersService;
 import com.cong.utils.PagedGridResult;
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.n3r.idworker.Sid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class MyOrdersServiceImpl implements MyOrdersService {
+public class MyOrdersServiceImpl extends BaseService implements MyOrdersService {
 
     @Autowired
     private OrdersMapperCustom ordersMapperCustom;
@@ -56,16 +56,16 @@ public class MyOrdersServiceImpl implements MyOrdersService {
         return setterPagedGrid(list, page);
     }
 
-    private PagedGridResult setterPagedGrid(List<?> list, Integer page) {
-        PageInfo<?> pageList = new PageInfo<>(list);
-        PagedGridResult grid = new PagedGridResult();
-        grid.setPage(page); // 当前页数
-        grid.setRows(list); // 当前页展示的列表
-        grid.setTotal(pageList.getPages()); // 总页数
-        grid.setRecords(pageList.getTotal()); // 总记录数
-
-        return grid;
-    }
+//    private PagedGridResult setterPagedGrid(List<?> list, Integer page) {
+//        PageInfo<?> pageList = new PageInfo<>(list);
+//        PagedGridResult grid = new PagedGridResult();
+//        grid.setPage(page); // 当前页数
+//        grid.setRows(list); // 当前页展示的列表
+//        grid.setTotal(pageList.getPages()); // 总页数
+//        grid.setRecords(pageList.getTotal()); // 总记录数
+//
+//        return grid;
+//    }
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
@@ -128,5 +128,45 @@ public class MyOrdersServiceImpl implements MyOrdersService {
         int result = ordersMapper.updateByExampleSelective(updateOrder, example);
 
         return result == 1;
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public OrderStatusCountsVO getOrderStatusCounts(String userId) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("userId", userId);
+        map.put("orderStatus", OrderStatusEnum.WAIT_PAY.type);
+        int waitPayCounts = ordersMapperCustom.getMyOrderStatusCounts(map);
+
+        map.put("orderStatus", OrderStatusEnum.WAIT_DELIVER.type);
+        int waitDeliverCounts = ordersMapperCustom.getMyOrderStatusCounts(map);
+
+        map.put("orderStatus", OrderStatusEnum.WAIT_RECEIVE.type);
+        int waitReceiveCounts = ordersMapperCustom.getMyOrderStatusCounts(map);
+
+        map.put("orderStatus", OrderStatusEnum.SUCCESS.type);
+        map.put("isComment", YesOrNo.NO.type);
+        int waitCommentCounts = ordersMapperCustom.getMyOrderStatusCounts(map);
+
+        OrderStatusCountsVO countsVO = new OrderStatusCountsVO(waitPayCounts,
+                                                                waitDeliverCounts,
+                                                                waitReceiveCounts,
+                                                                waitCommentCounts);
+
+
+        return countsVO;
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public PagedGridResult getMyOrderTrend(String userId, Integer page, Integer pageSize) {
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("userId", userId);
+
+        PageHelper.startPage(page, pageSize);
+        List<OrderStatus> list = ordersMapperCustom.getMyOrderTrend(map);
+
+        return setterPagedGrid(list, page);
     }
 }
