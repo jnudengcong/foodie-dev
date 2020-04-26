@@ -8,9 +8,12 @@ import com.cong.pojo.vo.NewItemsVO;
 import com.cong.service.CarouselService;
 import com.cong.service.CategoryService;
 import com.cong.utils.CONGJSONResult;
+import com.cong.utils.JSONUtils;
+import com.cong.utils.RedisOperator;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,12 +33,30 @@ public class IndexController {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private RedisOperator redisOperator;
+
     @ApiOperation(value = "获取首页轮播图列表", notes = "获取首页轮播图列表", httpMethod = "GET")
     @GetMapping("/carousel")
     public CONGJSONResult carousel() {
-        List<Carousel> list = carouselService.queryAll(YesOrNo.YES.type);
+
+        List<Carousel> list;
+        String carouselStr = redisOperator.get("carousel");
+        if (StringUtils.isBlank(carouselStr)) {
+            list = carouselService.queryAll(YesOrNo.YES.type);
+            redisOperator.set("carousel", JSONUtils.objectToJson(list));
+        } else {
+            list = JSONUtils.jsonToList(carouselStr, Carousel.class);
+        }
+
         return CONGJSONResult.ok(list);
     }
+
+    /**
+     * 1. 后台运营系统，一旦广告（轮播图）发生更改，就可以删除缓存，然后重置
+     * 2. 定时重置，比如每天凌晨三点重置
+     * 3. 每个轮播图都有坑是一个广告，每个广告都会有一个过期时间，过期了，再重置
+     */
 
     /**
      * 首页分类展示需求
@@ -45,7 +66,15 @@ public class IndexController {
     @ApiOperation(value = "获取商品分类(一级分类)", notes = "获取商品分类(一级分类)", httpMethod = "GET")
     @GetMapping("/cats")
     public CONGJSONResult cats() {
-        List<Category> list = categoryService.queryAllRootLevelCat();
+        List<Category> list;
+        String catsStr = redisOperator.get("cats");
+        if (StringUtils.isBlank(catsStr)) {
+            list = categoryService.queryAllRootLevelCat();
+            redisOperator.set("cats", JSONUtils.objectToJson(list));
+        } else {
+            list = JSONUtils.jsonToList(catsStr, Category.class);
+        }
+
         return CONGJSONResult.ok(list);
     }
 
@@ -58,7 +87,16 @@ public class IndexController {
             return CONGJSONResult.errorMsg("分类不存在");
         }
 
-        List<CategoryVO> list = categoryService.getSubCatList(rootCatId);
+        List<CategoryVO> list;
+        String key = "subCat:" + rootCatId;
+        String subCatStr = redisOperator.get(key);
+        if (StringUtils.isBlank(subCatStr)) {
+            list = categoryService.getSubCatList(rootCatId);
+            redisOperator.set(key, JSONUtils.objectToJson(list));
+        } else {
+            list = JSONUtils.jsonToList(subCatStr, CategoryVO.class);
+        }
+
         return CONGJSONResult.ok(list);
     }
 

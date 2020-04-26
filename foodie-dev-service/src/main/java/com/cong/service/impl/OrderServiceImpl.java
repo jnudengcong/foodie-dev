@@ -6,6 +6,7 @@ import com.cong.mapper.OrderItemsMapper;
 import com.cong.mapper.OrderStatusMapper;
 import com.cong.mapper.OrdersMapper;
 import com.cong.pojo.*;
+import com.cong.pojo.bo.ShopcartBO;
 import com.cong.pojo.bo.SubmitOrderBO;
 import com.cong.pojo.vo.MerchantOrdersVO;
 import com.cong.pojo.vo.OrderVO;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,7 +47,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public OrderVO createOrder(SubmitOrderBO submitOrderBO) {
+    public OrderVO createOrder(List<ShopcartBO> shopCartBOList, SubmitOrderBO submitOrderBO) {
 
         String userId = submitOrderBO.getUserId();
         String addressId = submitOrderBO.getAddressId();
@@ -85,10 +87,13 @@ public class OrderServiceImpl implements OrderService {
         String itemSpecIdArr[] = itemSpecIds.split(",");
         Integer totalAmount = 0;
         Integer realPayAmount = 0;
+        List<ShopcartBO> toBeRemoveShopCartList = new ArrayList<>();
         for (String itemSpecId : itemSpecIdArr) {
 
-            // TODO 整合redis后，商品够买的数量重新从redis的购物车中获取
-            int buyCounts = 1;
+            // 整合redis后，商品够买的数量重新从redis的购物车中获取
+            ShopcartBO shopcartBO = getBuyCountsFromShopCart(shopCartBOList, itemSpecId);
+            int buyCounts = shopcartBO.getBuyCounts();
+            toBeRemoveShopCartList.add(shopcartBO);
 
             // 2.1 根据规格id，查询规格的具体配置，主要获取价格
             ItemsSpec itemSpec = itemService.queryItemSpecById(itemSpecId);
@@ -140,8 +145,25 @@ public class OrderServiceImpl implements OrderService {
         OrderVO orderVO = new OrderVO();
         orderVO.setOrderId(orderId);
         orderVO.setMerchantOrdersVO(merchantOrdersVO);
+        orderVO.setToBeRemoveShopCartList(toBeRemoveShopCartList);
 
         return orderVO;
+    }
+
+    /**
+     * 从redis中的购物车里获取商品，目的：counts
+     * @param shopCartBOList
+     * @param itemSpecId
+     * @return
+     */
+    private ShopcartBO getBuyCountsFromShopCart(List<ShopcartBO> shopCartBOList, String itemSpecId) {
+        for (ShopcartBO sc : shopCartBOList) {
+            if (sc.getSpecId().equals(itemSpecId)) {
+                return sc;
+            }
+        }
+
+        return null;
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
